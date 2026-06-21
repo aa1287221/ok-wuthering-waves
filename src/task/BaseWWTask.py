@@ -17,6 +17,8 @@ logger = Logger.get_logger(__name__)
 number_re = re.compile(r'(\d+)')
 stamina_re = re.compile(r'(\d+)/(\d+)')
 LOGIN_TEXTS = ["登录", re.compile('Log', re.IGNORECASE), '登入']
+EAT_BUFF_FOOD_KEY = 'Eat Buff Food Before Farming'
+BUFF_FOOD_NAME_KEY = 'Buff Food Name'
 f_white_color = {
     'r': (235, 255),  # Red range
     'g': (235, 255),  # Green range
@@ -35,6 +37,15 @@ class BaseWWTask(BaseTask):
         self.key_config = self.get_global_config('Game Hotkey')  # 游戏热键配置
         self.next_monthly_card_start = 0
         self.scene: WWScene | None = None
+
+    def add_buff_food_config(self):
+        # Shared opt-in config row (mirror add_exit_after_config). Default OFF =
+        # zero behavior change. Eat the named buff food before farming starts.
+        self.default_config[EAT_BUFF_FOOD_KEY] = False
+        self.default_config[BUFF_FOOD_NAME_KEY] = '糖醋里脊'
+        self.config_description[EAT_BUFF_FOOD_KEY] = (
+            '开始刷取前自动食用提升声骸掉落率的料理（如糖醋里脊 +50%）')
+        self.config_description[BUFF_FOOD_NAME_KEY] = '要食用的料理名称（需已在背包中）'
 
     @property
     def logged_in(self):
