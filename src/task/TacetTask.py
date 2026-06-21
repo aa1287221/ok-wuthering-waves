@@ -40,6 +40,7 @@ class TacetTask(WWOneTimeTask, BaseCombatTask):
             9: [["a", 1.5], ["w", 3], ["a", 2.5]],
         }
         self.stamina_once = 60
+        self.add_buff_food_config()
 
     def run(self):
         super().run()
@@ -48,6 +49,7 @@ class TacetTask(WWOneTimeTask, BaseCombatTask):
         self.farm_tacet()
 
     def farm_tacet(self, daily=False, used_stamina=0, config=None):
+        self.eat_buff_food()
         if config is None:
             config = self.config
         if daily:

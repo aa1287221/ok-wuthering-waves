@@ -25,6 +25,7 @@ class SimulationTask(DomainTask):
             'Material Selection': 'Resonator EXP / Weapon EXP / Shell Credit',
         }
         self.stamina_once = 40
+        self.add_buff_food_config()
 
     def run(self):
         super().run()
@@ -32,6 +33,7 @@ class SimulationTask(DomainTask):
         self.farm_simulation()
 
     def farm_simulation(self, daily=False, used_stamina=0, config=None):
+        self.eat_buff_food()
         if daily:
             must_use = 180 - used_stamina
         else:

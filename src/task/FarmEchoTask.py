@@ -79,6 +79,7 @@ class FarmEchoTask(WWOneTimeTask, BaseCombatTask):
             '罗蕾莱': {'name': r'(罗蕾莱|夜之女皇)', 'set_night': True},
         }
         self.is_revived = False
+        self.add_buff_food_config()
 
     def on_combat_check(self):
         if not self._in_realm:
@@ -115,6 +116,8 @@ class FarmEchoTask(WWOneTimeTask, BaseCombatTask):
 
     def do_run(self):
         count = 0
+        if not self.in_realm():
+            self.eat_buff_food()
         self._in_realm = self.in_realm()
         self.manage_boss_parameters()
         self.log_info(f'in_realm: {self._in_realm}')

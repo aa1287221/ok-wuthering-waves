@@ -25,6 +25,7 @@ class ForgeryTask(DomainTask):
         self.stamina_once = 40
         self.total_number = 15
         self.material_mat = None
+        self.add_buff_food_config()
 
     def run(self):
         super().run()
@@ -32,6 +33,7 @@ class ForgeryTask(DomainTask):
         self.farm_forgery()
 
     def farm_forgery(self, daily=False, used_stamina=0, config=None):
+        self.eat_buff_food()
         if daily:
             must_use = 180 - used_stamina
         else:
