@@ -47,6 +47,43 @@ class BaseWWTask(BaseTask):
             '开始刷取前自动食用提升声骸掉落率的料理（如糖醋里脊 +50%）')
         self.config_description[BUFF_FOOD_NAME_KEY] = '要食用的料理名称（需已在背包中）'
 
+    def eat_buff_food(self):
+        """Eat the configured drop-rate buff food before farming. No-op unless enabled.
+
+        Never raises: the buff is an enhancement, not a precondition, so any
+        navigation failure is logged and we return to farming.
+        """
+        if not self.config.get(EAT_BUFF_FOOD_KEY):
+            return
+        food_name = self.config.get(BUFF_FOOD_NAME_KEY) or '糖醋里脊'
+        try:
+            self.ensure_main()
+            self._eat_buff_food_navigate(food_name)
+        except Exception as e:
+            self.log_info(f'eat_buff_food skipped ({food_name}): {e}', notify=False)
+        finally:
+            try:
+                self.ensure_main()
+            except Exception:
+                pass
+
+    def _eat_buff_food_navigate(self, food_name):
+        """Open backpack -> food tab -> find & eat `food_name` -> confirm -> back.
+
+        NOTE: all coordinates / OCR anchors / templates below are LIVE-CAPTURE
+        placeholders (Task 7). Each step writes a debug screenshot so the real
+        values can be tuned against the running client. Steps modelled on:
+        openF2Book/open_esc_menu (hotkey+ALT fallback), open_boss_book
+        (fractional tab click), ChangeEchoTask.run (OCR-find item), find_confirm
+        (confirm idiom), EnhanceEchoTask esc loop (escape back).
+        """
+        # TODO live-capture: backpack hotkey from config 'Backpack Key' + ALT fallback
+        self.screenshot('buff_food_1_open_backpack')
+        # TODO live-capture: confirm backpack open (anchor), select food tab,
+        #   OCR-find `food_name`, click it, click use/使用, confirm 确认, dismiss popup.
+        self.screenshot('buff_food_2_after_eat')
+        # esc back to world handled by eat_buff_food()'s finally -> ensure_main()
+
     @property
     def logged_in(self):
         return og.my_app.logged_in
