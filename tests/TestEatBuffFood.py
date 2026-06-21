@@ -48,5 +48,22 @@ class TestEatBuffFoodGuard(unittest.TestCase):
         self.assertIn('log', calls)
 
 
+from config import config
+from ok.test.TaskTestCase import TaskTestCase
+from src.task.EatBuffFoodTask import EatBuffFoodTask
+
+config['debug'] = True
+
+
+class TestEatBuffFoodTask(TaskTestCase):
+    task_class = EatBuffFoodTask
+    config = config
+
+    def test_task_has_buff_config(self):
+        self.assertIn(M.EAT_BUFF_FOOD_KEY, self.task.default_config)
+        self.assertEqual(self.task.default_config[M.BUFF_FOOD_NAME_KEY], '糖醋里脊')
+        self.assertTrue(self.task.default_config[M.EAT_BUFF_FOOD_KEY])  # standalone defaults ON
+
+
 if __name__ == '__main__':
     unittest.main()
