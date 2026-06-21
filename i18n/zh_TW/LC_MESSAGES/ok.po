@@ -1241,3 +1241,15 @@ msgstr "遊戲與okww語言必須為簡體/繁體中文,必須16:9解析度,使�
 
 msgid "数据坞五合一"
 msgstr "資料塢五合一"
+
+msgid "Eat Buff Food Before Farming"
+msgstr "刷取前食用增益料理"
+
+msgid "Buff Food Name"
+msgstr "料理名稱"
+
+msgid "开始刷取前自动食用提升声骸掉落率的料理（如糖醋里脊 +50%）"
+msgstr "開始刷取前自動食用提升聲骸掉落率的料理（如糖醋里脊 +50%）"
+
+msgid "要食用的料理名称（需已在背包中）"
+msgstr "要食用的料理名稱（需已在背包中）"

@@ -1021,3 +1021,9 @@ msgstr "Después de reclamar las recompensas diarias, comprueba el progreso del 
 
 msgid "Guidebook Key"
 msgstr "Guía de Solaris"
+
+msgid "Eat Buff Food Before Farming"
+msgstr "Eat Buff Food Before Farming"
+
+msgid "Buff Food Name"
+msgstr "Buff Food Name"

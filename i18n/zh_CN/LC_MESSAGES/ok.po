@@ -1151,3 +1151,9 @@ msgstr "领取日常奖励后检查每周乐园进度；如果尚未达到 6000 
 
 msgid "Guidebook Key"
 msgstr "索拉指南"
+
+msgid "Eat Buff Food Before Farming"
+msgstr "刷取前食用增益料理"
+
+msgid "Buff Food Name"
+msgstr "料理名称"

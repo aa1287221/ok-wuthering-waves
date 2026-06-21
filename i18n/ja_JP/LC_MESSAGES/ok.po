@@ -1107,3 +1107,9 @@ msgstr "デイリー報酬の受取後、ウィークリーガーデンの進捗
 
 msgid "Guidebook Key"
 msgstr "ソラリスガイド"
+
+msgid "Eat Buff Food Before Farming"
+msgstr "Eat Buff Food Before Farming"
+
+msgid "Buff Food Name"
+msgstr "Buff Food Name"

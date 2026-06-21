@@ -1108,3 +1108,9 @@ msgstr "일일 보상을 수령한 뒤 주간 정원 진행도를 확인하고, 
 
 msgid "Guidebook Key"
 msgstr "솔라리스 가이드"
+
+msgid "Eat Buff Food Before Farming"
+msgstr "Eat Buff Food Before Farming"
+
+msgid "Buff Food Name"
+msgstr "Buff Food Name"
